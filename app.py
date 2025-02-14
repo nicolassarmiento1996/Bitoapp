@@ -1,16 +1,14 @@
 import streamlit as st
 
 # ------------------------------------------------------------------
-# 1. CONFIGURACIÓN BÁSICA Y ESTILOS GLOBALES
+# 1. CONFIGURACIÓN BÁSICA
 # ------------------------------------------------------------------
-
 # Ajustamos el layout y deshabilitamos el menú de Streamlit
 st.set_page_config(page_title="Bito App", layout="centered", initial_sidebar_state="collapsed")
 
 # CSS para replicar la estética de tus pantallas
 CUSTOM_CSS = """
 <style>
-/* Fuente y reseteo básico */
 html, body {
     margin: 0; padding: 0;
     font-family: 'Montserrat', sans-serif;
@@ -24,7 +22,7 @@ html, body {
     height: 0;
 }
 
-/* Contenedor principal para centrar y limitar ancho */
+/* Contenedor principal */
 .main-container {
     max-width: 400px;
     margin: auto;
@@ -62,33 +60,15 @@ h1, h2, h3 {
     border: 1px solid #ccc !important;
 }
 
-/* Iconos en botones de Google/Facebook */
-.icon-btn {
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    background-color: #f0f0f0;
-    color: #333;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: none;
-    padding: 10px 20px;
-    font-weight: 600;
-    cursor: pointer;
-}
-.icon-btn img {
-    width: 24px; 
-    height: 24px; 
-    margin-right: 8px;
-}
-
-/* Opciones de género */
+/* Contenedor de género */
 .gender-container {
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/* Opciones de género */
 .gender-option {
     width: 100px;
     height: 120px;
@@ -107,7 +87,7 @@ h1, h2, h3 {
     border: 2px solid #646cff;
 }
 
-/* Lista de prioridades (simulada) */
+/* Lista de prioridades */
 .priority-item {
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -125,17 +105,17 @@ h1, h2, h3 {
 </style>
 """
 
-# Insertamos el CSS en la app
+# Inyectamos el CSS
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
-# Manejo de estado: pantalla actual
+# Manejo de estado para la navegación
 if "page" not in st.session_state:
     st.session_state.page = "welcome"
+
 
 # ------------------------------------------------------------------
 # 2. FUNCIONES PARA CADA PANTALLA
 # ------------------------------------------------------------------
-
 def welcome():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
     st.image("assets/welcome_hero.png", use_column_width=True)
@@ -153,15 +133,12 @@ def login():
     email = st.text_input("Correo")
     password = st.text_input("Contraseña", type="password")
 
-    # Botones con ícono (simulando Google y Facebook)
     c1, c2 = st.columns(2)
     with c1:
-        if st.button("Continuar con Google", key="google", help="Inicia sesión con Google"):
-            # Lógica para Google
+        if st.button("Continuar con Google", key="google"):
             pass
     with c2:
-        if st.button("Continuar con Facebook", key="facebook", help="Inicia sesión con Facebook"):
-            # Lógica para Facebook
+        if st.button("Continuar con Facebook", key="facebook"):
             pass
 
     st.write("Al registrarte, aceptas nuestros T&C.")
@@ -185,7 +162,6 @@ def gender():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
     st.markdown("<h2>Escoge tu género</h2>", unsafe_allow_html=True)
     
-    # Opciones con íconos
     st.markdown("<div class='gender-container'>", unsafe_allow_html=True)
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -240,16 +216,16 @@ def achievement():
     st.image("assets/medal.png", use_column_width=False, caption="Tu medalla de logro", output_format="PNG", width=120)
     st.write("Dar el primer paso es difícil, pero lo lograste. ¡Continúa con más retos!")
     if st.button("Reclamar medalla"):
-        st.session_state.page = \"bito_info\"
+        st.session_state.page = "bito_info"
         st.experimental_rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
 def bito_info():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
     st.markdown("<h2>¿Qué es Bito?</h2>", unsafe_allow_html=True)
-    st.write(\"Bito es una plataforma de bienestar que te ayuda a conquistar tu destino a través de hábitos y el poder de una comunidad real de apoyo.\")
-    if st.button(\"Ir a tu Santuario\"):
-        st.write(\"Redirigiendo al Dashboard...\")
+    st.write("Bito es una plataforma de bienestar que te ayuda a conquistar tu destino a través de hábitos y el poder de una comunidad real de apoyo.")
+    if st.button("Ir a tu Santuario"):
+        st.write("Redirigiendo al Dashboard...")
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ------------------------------------------------------------------
