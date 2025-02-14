@@ -118,7 +118,7 @@ if "page" not in st.session_state:
 # ------------------------------------------------------------------
 def welcome():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
-    st.image("assets/welcome_hero.png", use_container_width=True)
+    st.image("assets/welcome_hero.jpg", use_container_width=True)
     st.markdown("<h1>Bienvenido a Bito</h1>", unsafe_allow_html=True)
     st.write("Potencia tu vida con mejores hábitos. En el cómo hacerlo ayudamos nosotros.")
     if st.button("Regístrate y empieza tu camino"):
