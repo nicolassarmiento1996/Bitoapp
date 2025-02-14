@@ -118,7 +118,7 @@ if "page" not in st.session_state:
 # ------------------------------------------------------------------
 def welcome():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
-    st.image("assets/welcome_hero.png", use_column_width=True)
+    st.image("assets/welcome_hero.png", use_container_width=True)
     st.markdown("<h1>Bienvenido a Bito</h1>", unsafe_allow_html=True)
     st.write("Potencia tu vida con mejores hábitos. En el cómo hacerlo ayudamos nosotros.")
     if st.button("Regístrate y empieza tu camino"):
@@ -213,7 +213,7 @@ def achievement():
     st.markdown("<div class='main-container'>", unsafe_allow_html=True)
     st.markdown("<h2>¡Excelente!</h2>", unsafe_allow_html=True)
     st.write("Ya has completado el primer reto.")
-    st.image("assets/medal.png", use_column_width=False, caption="Tu medalla de logro", output_format="PNG", width=120)
+    st.image("assets/medal.png", use_container_width=False, caption="Tu medalla de logro", output_format="PNG", width=120)
     st.write("Dar el primer paso es difícil, pero lo lograste. ¡Continúa con más retos!")
     if st.button("Reclamar medalla"):
         st.session_state.page = "bito_info"
