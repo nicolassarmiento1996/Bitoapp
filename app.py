@@ -238,7 +238,7 @@ def achievement():
     st.markdown("<h2>¡Excelente!</h2>", unsafe_allow_html=True)
     st.write("Ya has completado el primer reto.")
     st.image("assets/medal.png", use_column_width=False, caption="Tu medalla de logro", output_format="PNG", width=120)
-    st.write(\"Dar el primer paso es difícil, pero lo lograste. ¡Continúa con más retos!\")
+    st.write("Dar el primer paso es difícil, pero lo lograste. ¡Continúa con más retos!")
     if st.button(\"Reclamar medalla\"):
         st.session_state.page = \"bito_info\"
         st.experimental_rerun()
